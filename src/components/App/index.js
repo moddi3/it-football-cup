@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
-
 import { FirebaseContext } from '../Firebase';
-
-import firebaseConfig from '../Firebase/firebase';
-
 class App extends Component {
   state = {
-    matches: []
+    teams: []
   };
   componentDidMount() {
-    this.props.firebase.getMatches().then(data => {
+    this.props.firebase.getTeams().then(data => {
       console.log(data);
-      this.setState({ matches: data });
+      this.setState({ teams: data });
     });
   }
 
   render() {
-    const APP_ID = process.env.REACT_APP_FACEBOOK_APP_ID;
-    const errorStyle = !APP_ID ? { fontStyle: 'italic', color: 'tomato' } : {};
-
     return (
       <div className="App">
-        {this.state.matches.map(item => (
-          <div key={item.id}>{item.id}</div>
-        ))}
+        <ul>
+          {this.state.teams.map(item => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const config = {
@@ -22,13 +22,21 @@ class Firebase {
     this.db
       .collection('matches')
       .get()
-      .then(querySnapshot => querySnapshot.docs.map(documentSnapshot => documentSnapshot.data()));
-  // {
-  // querySnapshot.forEach(doc => {
-  //   console.log(doc);
-  //   console.log(doc.data());
-  // });
-  // });
+      .then(snapshot => snapshot.docs.map(docSnapshot => docSnapshot.data()));
+
+  getTeams = () =>
+    this.db
+      .collection('teams')
+      .get()
+      .then(snapshot => snapshot.docs.map(docSnapshot => docSnapshot.data()));
+
+  addTeam = team => {
+    const teamId = team.name.toLowerCase();
+    this.db
+      .collection('teams')
+      .doc(teamId)
+      .set(team);
+  };
 }
 
 export default Firebase;
