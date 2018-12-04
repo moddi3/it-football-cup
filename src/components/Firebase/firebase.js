@@ -37,6 +37,12 @@ class Firebase {
       .doc(teamId)
       .set(team);
   };
+
+  getGroups = () =>
+    this.db
+      .collection('groups')
+      .get()
+      .then(snapshot => snapshot.docs.map(doc => doc.data()));
 }
 
 export default Firebase;
