@@ -145,7 +145,7 @@ class App extends Component {
     return (
       <Layout className="app">
         <Header className="header">
-          <h1>IT Football Cup 18/19</h1>
+          <h1>Подписка или смерть</h1>
         </Header>
         <Content className="content">
           {/* <ul>
@@ -153,8 +153,8 @@ class App extends Component {
               <li key={item.title}>{item.title}</li>
             ))}
           </ul> */}
-          <Row gutter={0}>
-            {this.state.groups.map((group, index) => {
+          <Row type="flex" justify="center" gutter={0}>
+            {/* {this.state.groups.map((group, index) => {
               return (
                 <Col key={group.title} span={12}>
                   <Table
@@ -165,17 +165,21 @@ class App extends Component {
                   />
                 </Col>
               );
-            })}
+            })} */}
+            <video src="/what.mp4" autoPlay loop></video>
+          </Row>
+          <Row type="flex" justify="center" gutter={0}>
+            <script src="//web.webformscr.com/apps/fc3/build/loader.js" sp-form-id="3dae940df654aa68cfa2ca2edccf4c652a81bc6fc1209e08503a912ff8ed2f85"></script>
           </Row>
         </Content>
-        <Footer>
+        {/* <Footer>
           <code>
             IT Football Cup ©2018 by{' '}
             <a href="https://github.com/moddi3" target="_blank" rel="noopener noreferrer">
               @moddi3
             </a>
           </code>
-        </Footer>
+        </Footer> */}
       </Layout>
     );
   }
